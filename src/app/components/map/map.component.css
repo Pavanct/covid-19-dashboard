@@ -1,0 +1,21 @@
+.container{
+  flex: 0.6;
+}
+
+.map-container {
+  position: absolute;
+  top: 45px;
+  left: 340px;
+  right: 340px;
+  bottom: -5%;
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid whitesmoke;
+  height: 85vh;
+}
+
+#map {
+  height: 100%;
+}
