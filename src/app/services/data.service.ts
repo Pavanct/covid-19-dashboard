@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  constructor(private http: HttpClient) {}
-   private url = "https://api.covid19api.com/summary";
+  constructor(private http: HttpClient) { }
+  private url = "https://api.covid19api.com/summary";
 
-   getData(): Observable<any>{
+  getData(): Observable<any> {
     return this.http.get(this.url)
-    .pipe((response) => response);
-   }
+      .pipe((response) => response);
+  }
 }
