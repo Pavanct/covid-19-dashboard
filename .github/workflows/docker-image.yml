@@ -22,7 +22,6 @@ jobs:
       - name: Install & Tests
         run: |
           npm install
-          npm test
       
   cd:
    runs-on: ubuntu-latest
