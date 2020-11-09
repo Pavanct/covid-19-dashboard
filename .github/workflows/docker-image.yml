@@ -1,0 +1,25 @@
+name: covid19-dashboard
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag covid19-dashboard:$(date +%s)
+      
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Push the Docker image to registry
+        run: docker tag covid19-dashboard:$(date +%s) registry.pavanct.com/covid19-dashboard:$(date +%s)
