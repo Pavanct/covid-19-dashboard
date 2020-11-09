@@ -8,15 +8,18 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
-
-  constructor(private dataService: DataService) { }
+  // options = {
+  //   layers: [
+  //     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' })
+  //   ],
+  //   zoom: 5,
+  //   center: L.latLng(52.5200, 13.4050)
+  // };
+  constructor() { }
   private map;
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.dataService.getData().subscribe((data) => {
-      console.log('data', data);
-    });;
   }
 
   private initMap(): void {
@@ -32,6 +35,6 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
-  
+
 
 }

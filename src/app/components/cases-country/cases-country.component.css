@@ -1,54 +1,128 @@
-.container{
-    flex: 0.2;
-    max-height: 100vh;
+.container {
+  max-height: 100vh;
+  overflow: hidden;
+  min-width: 600px;
 }
 
-.global-cases{
-    /* max-width: 400px;
-    width: 320px; */
-    max-height: 20vh;
-    margin-left: 10px;
-    background-color: black;
-    color: azure;
+.mobile-label {
+  display: none;
 }
 
-.global-header{
-    justify-content: center;
+.title {
+  justify-content: center;
+  color: azure;
+  background-color: rgb(43, 41, 54);
 }
 
-.cases-text{
-    padding: 10px;
-    text-align: center;
-    font-weight: 800;
-    font-size: 60px;
-    color: crimson;
+.cards {
+  align-items: center;
+  display: flex;
+  height: 12vh;
+  margin-bottom: 20px;
 }
 
-.data-table{
-    /* max-width: 400px;
-    width: 350px; */
-    margin-top: 20px;
-    margin-left: 10px;
-    /* text-align: center; */
-    max-height: 80vh;
-    overflow: auto;
-    background-color: black;
+.global-cases {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: fit-content;
+  flex: 1 1 auto;
+  background-color: rgb(43, 41, 54);
+  color: azure;
+  flex-wrap: wrap;
+}
+
+.global-header {
+  justify-content: center;
+}
+
+.cases-text {
+  text-align: center;
+  font-weight: 800;
+  font-size: 25px;
+  color: rgb(255, 0, 21);
+}
+
+.cases-text-deaths {
+  text-align: center;
+  font-weight: 800;
+  font-size: 25px;
+  color: azure;
+}
+
+.cases-recovered {
+  text-align: center;
+  font-weight: 800;
+  font-size: 25px;
+  color: rgb(2, 192, 43);
+}
+
+table.mat-table {
+  display: table;
+  width: 100%;
+}
+
+.data-table {
+  max-height: 100vh;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgb(43, 41, 54);
 }
 
 th.mat-header-cell {
-  text-align: center !important;
   color: azure;
-  background-color: black;
+  background-color: rgb(22, 19, 43);
+  font-size: 20px;
 }
 
-.cases-confirmed{
-    color: crimson;
-    background-color: black;
-    font-weight: 600;
-    padding-right: 20px;
+.cases-confirmed {
+  color: rgb(255, 0, 21);
+  background-color: rgb(43, 41, 54);
+  font-size: 18px;
 }
 
-.country{
+.cases-recovered-countries {
+  color: rgb(2, 192, 43);
+  background-color: rgb(43, 41, 54);
+  font-size: 18px;
+}
+
+.cases-deaths {
+  color: azure;
+  background-color: rgb(43, 41, 54);
+  font-size: 18px;
+}
+
+.country {
+  color: azure;
+  background-color: rgb(43, 41, 54);
+  font-size: 18px;
+}
+
+/* @media (max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+    font-size: 10px;
     color: azure;
-    background-color: black;
-}
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+
+  .mat-cell {
+    font-size: 10px;
+  }
+
+  .mat-card-title {
+    font-size: 15px;
+  }
+} */

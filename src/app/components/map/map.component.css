@@ -1,19 +1,15 @@
-.container{
-  flex: 0.6;
-}
-
 .map-container {
+  flex: 0.6;
   position: absolute;
-  top: 45px;
-  left: 340px;
-  right: 340px;
-  bottom: -5%;
-  margin: 30px;
+  top: 20%;
+  bottom: 0;
+  left: 20%;
+  right: 0;
 }
 
 .map-frame {
-  border: 2px solid whitesmoke;
-  height: 85vh;
+  border: 2px solid black;
+  height: 100vh;
 }
 
 #map {

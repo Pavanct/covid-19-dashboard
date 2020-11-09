@@ -1,18 +1,8 @@
 .container{
     overflow-y: hidden;
+    background:  black;
 }
 
 .content{
-    display: flex;
     overflow-y: hidden !important;
-}
-
-.title{
-    justify-content: center;
-    color: white;
-    background-color: black;
-}
-
-.map{
-    max-height: 80vh;
 }
