@@ -8,18 +8,38 @@ on:
 
 jobs:
 
-  build:
+  ci:
 
     runs-on: ubuntu-latest
+    container:
+      image: node
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag covid19-dashboard:latest
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install & Tests
+        run: |
+          npm install
+          npm test
       
-  push:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Push the Docker image to registry
-        run: docker tag covid19-dashboard:latest registry.pavanct.com/covid19-dashboard
+  cd:
+   runs-on: ubuntu-latest
+   needs: ci
+
+   steps:
+     - uses: actions/checkout@v1
+     - name: Docker login
+       run: docker login ${{ secrets.DOCKER_URI }} -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+     - name: Build
+       run: docker build -t "covid19-dashboard" .
+     - name: Tags
+       run: |
+         docker tag covid19-dashboard ${{ secrets.DOCKER_URI }}/covid19-dashboard:${{ github.sha }}
+         docker tag covid19-dashboard ${{ secrets.DOCKER_URI }}/covid19-dashboard:latest
+     - name: Push
+       run: |
+          docker push ${{ secrets.DOCKER_URI }}/covid19-dashboard:${{ github.sha }}
+          docker push $$´{{ secrets.DOCKER_URI }}/covid19-dashboard:latest
+
