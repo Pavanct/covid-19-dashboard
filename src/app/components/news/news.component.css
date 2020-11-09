@@ -1,0 +1,33 @@
+.grid{
+    background-color: black;
+}
+
+.article-card{
+  background-color: rgb(43, 41, 54);
+  color: azure;
+  width: 400px;
+}
+
+.title{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.img-article{
+    padding-top: 10px;
+    object-fit: cover; 
+    height: 200px;
+    width: 100%;
+}
+
+.source-name{
+    color: azure;
+}
+
+a{
+    color:rgb(79, 252, 252);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+

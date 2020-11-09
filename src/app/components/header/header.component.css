@@ -1,0 +1,19 @@
+.toolbar{
+    background-color:  rgb(43, 41, 54);
+    color: azure;
+}
+
+
+span{
+    display: inline;
+    margin-left: 20px;
+}
+
+a{
+    color:azure;
+    text-decoration: none;
+}
+
+.active{
+    color: rgb(1, 33, 216);
+}
