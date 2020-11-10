@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
-  private url = "http://newsapi.org/v2/everything?q=covid19&apiKey=" + process.env.API_KEY.toString();
+  private url = "http://newsapi.org/v2/everything?q=covid19&apiKey=0e77112837cf40ebbaac370369ccb447";
 
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
