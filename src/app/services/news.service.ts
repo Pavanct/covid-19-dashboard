@@ -8,8 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class NewsService {
 
-  private url = "http://newsapi.org/v2/everything?q=covid19&apiKey=" + process.env.API_KEY.toString();
-
+  private url = "https://newsapi.org/v2/everything?q=covid19&apiKey="; 
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
     return this.http.get(this.url)
