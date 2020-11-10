@@ -23,9 +23,6 @@ export class MapComponent implements AfterViewInit {
       console.log("countryInfo", this.countryInfo);
       this.initMap();
     });
-
-
-
   }
 
   private initMap(): void {
@@ -49,70 +46,54 @@ export class MapComponent implements AfterViewInit {
       zoom: 3.3,
       layers: [Stamen]
     });
-    // const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //   maxZoom: 14,
-    //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    // });
+
     var baseMaps = {
       "Stamen": Stamen,
       "DarkMatter": DarkMatter
     };
 
     var overlayMaps = {
-      // "Cities": cities
+      // "ActiveCases": Stamen
     };
     L.control.layers(baseMaps, overlayMaps).addTo(this.map);
 
-
-
-    // tiles.addTo(this.map);
-
-    // let circle = L.circle([51.165691, 10.451526], {
-    //   color: "red",
-    //   fillColor: "#f03",
-    //   fillOpacity: 0.5,
-    //   radius: 250000
-    // }).addTo(this.map);
-
-    let highCases = [];
-    let lowesetCases = [];
-    let lowCases = [];
+    let highActive = [];
+    let lowestActive = [];
+    let lowActive = [];
     let radius: number;
+    let activeGroup = L.featureGroup();
 
     // to add circles on all countries
-    highCases = this.data.filter(a => a.active >= 50000).map(a => a.countryInfo);
-    lowesetCases = this.data.filter(a => a.active >= 5000 && a.active < 50000).map(a => a.countryInfo);
-    lowCases = this.data.filter(a => a.active < 5000).map(a => a.countryInfo);
+    highActive = this.data.filter(a => a.active >= 50000).map(a => a.countryInfo);
+    lowestActive = this.data.filter(a => a.active >= 5000 && a.active < 50000).map(a => a.countryInfo);
+    lowActive = this.data.filter(a => a.active < 5000).map(a => a.countryInfo);
 
-    console.log("highcases", highCases);
-
-    highCases.forEach(element => {
+    highActive.forEach(element => {
       L.circle([element.lat, element.long], {
         color: "#FF380E",
         fillColor: "#f03",
         fillOpacity: 0.3,
         radius: 350000
-      }).addTo(this.map);
+      }).addTo(activeGroup);
     })
 
-    lowesetCases.forEach(element => {
+    lowestActive.forEach(element => {
       L.circle([element.lat, element.long], {
         color: "orange",
         fillColor: "",
         fillOpacity: 0.7,
         radius: 150000
-      }).addTo(this.map);
+      }).addTo(activeGroup);
     })
 
-    lowCases.forEach(element => {
+    lowActive.forEach(element => {
       L.circle([element.lat, element.long], {
         color: "yellow",
         fillColor: "",
         fillOpacity: 0.7,
         radius: 150000
-      }).addTo(this.map);
+      }).addTo(activeGroup);
     })
-
 
     /*Legend specific*/
     let legend = L.control({ position: "bottomleft" });
@@ -125,23 +106,28 @@ export class MapComponent implements AfterViewInit {
       div.innerHTML += '<i style="background-color: orange"></i><span>< 5000</span><br>';
       return div;
     })
-
     legend.addTo(this.map);
 
+    // this.map.on('overlayadd', function (eventLayer) {
+    //   // Switch the legends...
+    //   if (eventLayer.name === 'overlay1_name') {
+    //     legend1.addTo(this.map);
+    //     this.map.removeControl(legend2);
+    //   } else if (eventLayer.name === 'overlay2_name') {
+    //     legend2.addTo(this.map);
+    //     this.map.removeControl(legend1);
+    //   }
+    // });
 
+    // this.map.on('overlayremove', function (eventLayer) {
+    //   if (eventLayer.name === 'overlay1_name') {
+    //     this.map.removeControl(legend1);
+    //   } else if (eventLayer.name === 'overlay2_name') {
+    //     this.map.removeControl(legend2);
+    //   }
+    // });
 
-    // this.countryInfo.forEach(element => {
-    //   L.circle([element.lat, element.long], {
-    //     color: "red",
-    //     fillColor: "#f03",
-    //     fillOpacity: 0.5,
-    //     radius: 150000
-    //   }).addTo(this.map);
-    // })
-
+    this.map.addLayer(activeGroup);
 
   }
-
-
-
 }
