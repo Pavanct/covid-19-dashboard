@@ -1,32 +1,18 @@
-<!-- <div class="container">
-    <mat-card class="article-card" *ngFor="let article of articles">
-        <mat-card-header>
-            <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
-                class="example-header-image"></div>
-            <mat-card-title class="title">{{article.title}}</mat-card-title>
-            <mat-card-subtitle>{{article.source.name}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image class="img-article" src={{article.urlToImage}} alt="">
-        <mat-card-content>
-            <p>
-                {{article.description}}
-            </p>
-        </mat-card-content>
-    </mat-card>
-</div> -->
-
-<mat-grid-list [cols]="breakpoint" rowHeight="1:0.8" (window:resize)="onResize($event)" class="grid">
-    <mat-grid-tile *ngFor="let article of articles" class="grid-tile">
-        <mat-card class="article-card">
+<div class="content margin-top-20" fxFlexFill  gdAlignRows="center" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="28%" fxFlex.xl="22%" fxFlex.lg="28%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let article of articles"
+        class="padding-fix">
+        <mat-card class="mat-elevation-z4 article-card " >
             <mat-card-header>
-                <!-- <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
+                <!-- <div mat-card-avatar
+                    [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
                     class="header-image"></div> -->
-                <mat-card-title class="title">{{article.title}}</mat-card-title>
-                <mat-card-subtitle class="source-name">{{article.source.name}}</mat-card-subtitle>
+                <img mat-card-image class="img-article" src={{article.urlToImage}} alt="">
+
             </mat-card-header>
 
-            <mat-card-content>
-                <img mat-card-image class="img-article" src={{article.urlToImage}} alt="">
+            <mat-card-content class="card-content">
+                <mat-card-title class="title">{{article.title}}</mat-card-title>
+                <mat-card-subtitle class="source-name">{{article.source.name}}</mat-card-subtitle>
                 <p class="description">
                     {{article.description | slice:0:100}}...
                 </p>
@@ -34,21 +20,6 @@
                     <mat-icon>visibility</mat-icon> More...
                 </a>
             </mat-card-content>
-
-            <!-- <mat-card-actions class="action-buttons">
-                    <button mat-button color="primary">
-                        <mat-icon>thumb_up_alt</mat-icon> 12 Likes
-                    </button>
-                    <button mat-button color="primary">
-                        <mat-icon>comment</mat-icon> Comments
-                    </button>
-                    <button mat-button color="primary">
-                        <mat-icon>share</mat-icon> Share
-                    </button>
-                    <a mat-button color="primary" href={{article.url}} target="_blank">
-                        <mat-icon>visibility</mat-icon> More
-                    </a>
-                </mat-card-actions> -->
         </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>
+</div>

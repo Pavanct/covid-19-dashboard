@@ -15,7 +15,7 @@ import { NewsComponent } from './components/news/news.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatTableModule,
     MatSortModule,
     MatGridListModule,
-    LeafletModule
+    LeafletModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
