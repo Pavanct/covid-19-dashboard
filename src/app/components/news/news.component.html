@@ -1,0 +1,25 @@
+<div class="content margin-top-20" fxFlexFill  gdAlignRows="center" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="28%" fxFlex.xl="22%" fxFlex.lg="28%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let article of articles"
+        class="padding-fix">
+        <mat-card class="mat-elevation-z4 article-card " >
+            <mat-card-header>
+                <!-- <div mat-card-avatar
+                    [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}"
+                    class="header-image"></div> -->
+                <img mat-card-image class="img-article" src={{article.urlToImage}} alt="">
+
+            </mat-card-header>
+
+            <mat-card-content class="card-content">
+                <mat-card-title class="title">{{article.title}}</mat-card-title>
+                <mat-card-subtitle class="source-name">{{article.source.name}}</mat-card-subtitle>
+                <p class="description">
+                    {{article.description | slice:0:100}}...
+                </p>
+                <a mat-button href={{article.url}} target="_blank">
+                    <mat-icon>visibility</mat-icon> More...
+                </a>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

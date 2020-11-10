@@ -1,9 +1,4 @@
-<div class="container" *ngIf="data">
-    <p>
-        <mat-toolbar class="title">
-            <h1>COVID-19 Dashboard</h1>
-        </mat-toolbar>
-    </p>
+<div class="container" >
     <div class="cards">
         <mat-card class="global-cases">
             <mat-card-header class="global-header">
@@ -61,8 +56,7 @@
     </div>
 
     <div class="mat-elevation-z8 data-table">
-        <table mat-table [dataSource]="dataSource" matSort matSortActive="TotalConfirmed" matSortDirection="desc"
-            [class.isMobile]="isMobile">
+        <table mat-table [dataSource]="dataSource" matSort matSortActive="TotalConfirmed" matSortDirection="desc">
 
             <ng-container matColumnDef="TotalConfirmed">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Confirmed Cases </th>

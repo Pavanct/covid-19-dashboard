@@ -2,6 +2,7 @@
   max-height: 100vh;
   overflow: hidden;
   min-width: 600px;
+  background-color: black;
 }
 
 .mobile-label {
@@ -18,7 +19,7 @@
   align-items: center;
   display: flex;
   height: 12vh;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .global-cases {
@@ -99,30 +100,3 @@ th.mat-header-cell {
   background-color: rgb(43, 41, 54);
   font-size: 18px;
 }
-
-/* @media (max-width: 600px) {
-  .mobile-label {
-    width: 80px;
-    display: inline-block;
-    font-size: 10px;
-    color: azure;
-  }
-
-  .mat-header-row {
-    display: none;
-  }
-
-  .mat-row {
-    flex-direction: column;
-    align-items: start;
-    padding: 8px 24px;
-  }
-
-  .mat-cell {
-    font-size: 10px;
-  }
-
-  .mat-card-title {
-    font-size: 15px;
-  }
-} */
