@@ -17,7 +17,7 @@ jobs:
      - name: Docker login
        run: docker login ${{ secrets.DOCKER_URI }} -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
      - name: Build
-       run: docker build -t "covid19-dashboard" .
+       run: docker build --build-arg API_KEY=${{ secrets.API_KEY }} -t "covid19-dashboard" .
      - name: Tags
        run: |
          docker tag covid19-dashboard ${{ secrets.DOCKER_URI }}/covid19-dashboard:${{ github.sha }}
