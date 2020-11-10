@@ -29,27 +29,43 @@ export class MapComponent implements AfterViewInit {
   }
 
   private initMap(): void {
+    let Stamen = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      subdomains: 'abcd',
+      minZoom: 3,
+      maxZoom: 8,
+      ext: "png"
+    });
+
+    let DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      minzoom: 3,
+      maxZoom: 8
+    });
+
     this.map = L.map('map', {
       center: [40.165691, 18.451526],
-      zoom: 3.3
+      zoom: 3.3,
+      layers: [Stamen, DarkMatter]
     });
     // const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     //   maxZoom: 14,
     //   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     // });
+    var baseMaps = {
+      "Stamen": Stamen,
+      "DarkMatter": DarkMatter
+    };
+
+    var overlayMaps = {
+      // "Cities": cities
+    };
+    L.control.layers(baseMaps, overlayMaps).addTo(this.map);
 
 
 
-    const tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: 'abcd',
-      minZoom: 3,
-      maxZoom: 4,
-      /* tslint:disable-next-line */
-      ext: "png"
-    });
-
-    tiles.addTo(this.map);
+    // tiles.addTo(this.map);
 
     // let circle = L.circle([51.165691, 10.451526], {
     //   color: "red",
@@ -58,18 +74,70 @@ export class MapComponent implements AfterViewInit {
     //   radius: 250000
     // }).addTo(this.map);
 
-    let latlngarray = [];
+    let highCases = [];
+    let lowesetCases = [];
+    let lowCases = [];
     let radius: number;
 
     // to add circles on all countries
-    this.countryInfo.forEach(element => {
+    highCases = this.data.filter(a => a.active >= 50000).map(a => a.countryInfo);
+    lowesetCases = this.data.filter(a => a.active >= 5000 && a.active < 50000).map(a => a.countryInfo);
+    lowCases = this.data.filter(a => a.active < 5000).map(a => a.countryInfo);
+
+    console.log("highcases", highCases);
+
+    highCases.forEach(element => {
       L.circle([element.lat, element.long], {
-        color: "red",
-      fillColor: "#f03",
-      fillOpacity: 0.5,
-      radius: 150000
+        color: "#FF380E",
+        fillColor: "#f03",
+        fillOpacity: 0.5,
+        radius: 350000
       }).addTo(this.map);
     })
+
+    lowesetCases.forEach(element => {
+      L.circle([element.lat, element.long], {
+        color: "orange",
+        fillColor: "",
+        fillOpacity: 0.5,
+        radius: 150000
+      }).addTo(this.map);
+    })
+
+    lowCases.forEach(element => {
+      L.circle([element.lat, element.long], {
+        color: "yellow",
+        fillColor: "",
+        fillOpacity: 0.5,
+        radius: 150000
+      }).addTo(this.map);
+    })
+
+
+    /*Legend specific*/
+    let legend = L.control({ position: "bottomleft" });
+
+    legend.onAdd = (() => {
+      var div = L.DomUtil.create("div", "legend");
+      div.innerHTML += "<h4>Legend</h4>";
+      div.innerHTML += '<i style="background: #477AC2"></i><span>>= 50000</span><br>';
+      div.innerHTML += '<i style="background: #448D40"></i><span>>= 5000 & < 50000</span><br>';
+      div.innerHTML += '<i style="background: #E6E696"></i><span>< 5000</span><br>';
+      return div;
+    })
+
+    legend.addTo(this.map);
+
+
+
+    // this.countryInfo.forEach(element => {
+    //   L.circle([element.lat, element.long], {
+    //     color: "red",
+    //     fillColor: "#f03",
+    //     fillOpacity: 0.5,
+    //     radius: 150000
+    //   }).addTo(this.map);
+    // })
 
 
   }
