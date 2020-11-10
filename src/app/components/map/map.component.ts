@@ -33,21 +33,21 @@ export class MapComponent implements AfterViewInit {
       attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       subdomains: 'abcd',
       minZoom: 3,
-      maxZoom: 8,
+      maxZoom: 5,
       ext: "png"
     });
 
     let DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
       subdomains: 'abcd',
-      minzoom: 3,
-      maxZoom: 8
+      minZoom: 3,
+      maxZoom: 5
     });
 
     this.map = L.map('map', {
       center: [40.165691, 18.451526],
       zoom: 3.3,
-      layers: [Stamen, DarkMatter]
+      layers: [Stamen]
     });
     // const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     //   maxZoom: 14,
@@ -90,7 +90,7 @@ export class MapComponent implements AfterViewInit {
       L.circle([element.lat, element.long], {
         color: "#FF380E",
         fillColor: "#f03",
-        fillOpacity: 0.5,
+        fillOpacity: 0.3,
         radius: 350000
       }).addTo(this.map);
     })
@@ -99,7 +99,7 @@ export class MapComponent implements AfterViewInit {
       L.circle([element.lat, element.long], {
         color: "orange",
         fillColor: "",
-        fillOpacity: 0.5,
+        fillOpacity: 0.7,
         radius: 150000
       }).addTo(this.map);
     })
@@ -108,7 +108,7 @@ export class MapComponent implements AfterViewInit {
       L.circle([element.lat, element.long], {
         color: "yellow",
         fillColor: "",
-        fillOpacity: 0.5,
+        fillOpacity: 0.7,
         radius: 150000
       }).addTo(this.map);
     })
@@ -119,10 +119,10 @@ export class MapComponent implements AfterViewInit {
 
     legend.onAdd = (() => {
       var div = L.DomUtil.create("div", "legend");
-      div.innerHTML += "<h4>Legend</h4>";
-      div.innerHTML += '<i style="background: #477AC2"></i><span>>= 50000</span><br>';
-      div.innerHTML += '<i style="background: #448D40"></i><span>>= 5000 & < 50000</span><br>';
-      div.innerHTML += '<i style="background: #E6E696"></i><span>< 5000</span><br>';
+      div.innerHTML += "<h4>Active Cases</h4>";
+      div.innerHTML += '<i style="background-color: #FF380E"></i><span>>= 50000</span><br>';
+      div.innerHTML += '<i style="background-color: yellow"></i><span>>= 5000 & < 50000</span><br>';
+      div.innerHTML += '<i style="background-color: orange"></i><span>< 5000</span><br>';
       return div;
     })
 
