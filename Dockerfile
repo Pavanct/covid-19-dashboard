@@ -3,7 +3,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+ARG API_KEY
+RUN API_KEY=${API_KEY}} \
+    npm run build  
 
 FROM nginx:latest as prod_stage
 RUN sed -i 's,location / {,location / {try_files $uri $uri/ /index.html?/$request_uri;,g' /etc/nginx/conf.d/default.conf
