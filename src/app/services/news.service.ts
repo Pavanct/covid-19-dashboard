@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class NewsService {
 
-  private url = "http://newsapi.org/v2/everything?q=covid19&apiKey=0e77112837cf40ebbaac370369ccb447";
+  private url = "http://newsapi.org/v2/everything?q=covid19";
 
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {

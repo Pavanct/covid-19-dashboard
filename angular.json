@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "corona-tracker"
+  "defaultProject": "corona-tracker",
+  "cli": {
+    "analytics": false
+  }
 }

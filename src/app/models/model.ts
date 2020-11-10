@@ -21,7 +21,7 @@ export class GlobalData {
     // todayRecovered: number;
     active: number;
     critical: number;
-    recovered:  number;
+    recovered: number;
     deaths: number;
     cases: number;
     casesPerOneMillion: number;
@@ -43,18 +43,28 @@ export class GlobalData {
 
 export class CountryData extends GlobalData {
     Country: string;
+    countryInfo: CountryInfo;
     // CountryCode: string;
     // Date: Date;
     // Slug: string,
 }
 
-export class News{
+export class CountryInfo {
+    _id: number;
+    iso2: string;
+    iso3: string;
+    lat: number;
+    long: number;
+    flag: string;
+}
+
+export class News {
     articles: Article[];
     status: string;
     totalResults: number;
 }
 
-export class Article{
+export class Article {
     author: string;
     content: string;
     description: string;
