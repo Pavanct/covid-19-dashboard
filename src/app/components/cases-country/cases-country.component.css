@@ -5,10 +5,6 @@
   background-color: black;
 }
 
-.mobile-label {
-  display: none;
-}
-
 .title {
   justify-content: center;
   color: azure;
@@ -55,10 +51,10 @@
   color: rgb(2, 192, 43);
 }
 
-table.mat-table {
+/* table.mat-table {
   display: table;
   width: 100%;
-}
+} */
 
 .data-table {
   max-height: 80vh;
@@ -69,11 +65,11 @@ table.mat-table {
   background-color: rgb(43, 41, 54);
 }
 
-th.mat-header-cell {
+.mat-header-cell {
   height: fit-content;
   color: azure;
   background-color: rgb(22, 19, 43);
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .cases-confirmed {
@@ -132,13 +128,31 @@ th.mat-header-cell {
 }
 
 @media only screen and (max-width: 600px) {
+  .data-table{
+    max-height: 100vh;
+  }
+
   .global-title {
     font-size: 14px;
   }
+
   .cases-recovered,
   .cases-text,
   .cases-text-deaths {
     font-size: 20px;
     font-weight: 400;
+  }
+
+  .mat-header-cell{
+    font-size: 10px;
+  }
+
+  .mat-cell{
+    font-size: 13px;
+    justify-content: center;
+  }
+
+  .country{
+    font-size: 11px;
   }
 }
