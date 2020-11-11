@@ -1,4 +1,4 @@
-<div class="container" >
+<div class="container">
     <div class="cards">
         <mat-card class="global-cases">
             <mat-card-header class="global-header">
@@ -56,6 +56,11 @@
     </div>
 
     <div class="mat-elevation-z8 data-table">
+        <!-- <div class="filter">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div> -->
         <table mat-table [dataSource]="dataSource" matSort matSortActive="cases" matSortDirection="desc">
 
             <ng-container matColumnDef="country">
@@ -63,7 +68,7 @@
                 <td mat-cell *matCellDef="let row" class="country"><span class="mobile-label">Country </span>
                     {{row?.country}} </td>
             </ng-container>
-            
+
             <ng-container matColumnDef="cases">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Confirmed Cases </th>
                 <td mat-cell *matCellDef="let row" class="cases-confirmed"><span class="mobile-label">Total Cases
@@ -105,8 +110,6 @@
                 <td mat-cell *matCellDef="let row" class="cases-recovered-countries"><span class="mobile-label">New
                         Recovered </span> {{row?.todayRecovered | number}} </td>
             </ng-container>
-
-            
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

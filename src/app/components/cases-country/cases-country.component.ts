@@ -15,21 +15,22 @@ export class CasesCountryComponent implements AfterViewInit  {
   public data: GlobalData;
   public globalData: GlobalData;
   public countries: CountryData[];
-  displayedColumns: string[] = ['cases', 'active','deaths', 'recovered', 'todayCases', 'todayDeaths', 'todayRecovered', 'country'];
+  displayedColumns: string[] = ['country','cases', 'active','deaths', 'recovered', 'todayCases', 'todayDeaths', 'todayRecovered'];
   dataSource: MatTableDataSource<CountryData>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
+
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
   constructor(private dataService: DataService) {
   }
 
   ngOnInit(): void {
-    // this.dataService.getData().subscribe((data: SummaryData) => {
-    //   console.log('data', data);
-    //   this.data = data;
-    //   this.globalData = this.data.Global;
-    //   this.countries = this.data.Countries;
-    //   this.dataSource = new MatTableDataSource<CountryData>(this.countries);
-    //   this.dataSource.sort = this.sort;
-    // });  
+
     this.dataService.getWorldData().subscribe((data: GlobalData)=> {
       this.data = data;
       this.globalData = data;
@@ -39,7 +40,11 @@ export class CasesCountryComponent implements AfterViewInit  {
       this.countries = data;
       this.dataSource = new MatTableDataSource<CountryData>(this.countries);
       this.dataSource.sort = this.sort;
-    })
+    });
+
+    // this.dataSource.filterPredicate = (data: CountryData, filter: string) => {
+    //   return data.Country == filter;
+    // };
 
   }
 
