@@ -42,9 +42,9 @@ export class CasesCountryComponent implements AfterViewInit  {
       this.dataSource.sort = this.sort;
     });
 
-    // this.dataSource.filterPredicate = (data: CountryData, filter: string) => {
-    //   return data.Country == filter;
-    // };
+    this.dataSource.filterPredicate = (data: CountryData, filter: string) => {
+      return data.Country == filter;
+    };
 
   }
 
