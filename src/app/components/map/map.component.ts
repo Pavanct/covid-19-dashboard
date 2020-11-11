@@ -219,9 +219,11 @@ export class MapComponent implements AfterViewInit {
       if(legend == "Active Cases"){
         activeLegend.addTo(this.map);
         this.map.removeControl(casesLegend);
+        this.map.removeControl(deathsLegend);
       }else if(legend == "Total Cases"){
         casesLegend.addTo(this.map);
         this.map.removeControl(activeLegend);
+        this.map.removeControl(deathsLegend);
       }else if(legend == "Total Deaths"){
         console.log("adding death legend")
         deathsLegend.addTo(this.map);
