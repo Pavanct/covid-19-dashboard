@@ -17,32 +17,21 @@
 
 .cards {
   align-items: center;
-  /* display: flex; */
-  /* height: 12vh; */
   margin-bottom: 10px;
   margin-top: 10px;
   padding: 20px;
-  
 }
 
 .global-cases {
-  /* margin-left: 10px;
-  margin-right: 10px; */
   margin: 0 10px;
   margin-bottom: 10px;
   width: 150px;
-  /* flex: 1 1 auto; */
   background-color: rgb(43, 41, 54);
   color: azure;
-  /* flex-wrap: wrap; */
 }
 
 .global-header {
   justify-content: center;
-}
-
-.global-title{
-  font-size: 14px;
 }
 
 .cases-text {
@@ -87,7 +76,6 @@ th.mat-header-cell {
   font-size: 20px;
 }
 
-
 .cases-confirmed {
   color: rgb(255, 0, 21);
   background-color: rgb(43, 41, 54);
@@ -125,19 +113,32 @@ th.mat-header-cell {
   margin-left: 10px;
 }
 
-.mat-input-placeholder  {
-  color: azure!important;
+.mat-input-placeholder {
+  color: azure !important;
 }
 
-.mat-input-element{
+.mat-input-element {
   color: azure;
 }
 
-::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
   background-color: azure !important;
-  color: azure !important
+  color: azure !important;
 }
 
 ::ng-deep .mat-form-field-empty.mat-form-field-label {
-    color: azure!important;
+  color: azure !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .global-title {
+    font-size: 14px;
+  }
+  .cases-recovered,
+  .cases-text,
+  .cases-text-deaths {
+    font-size: 20px;
+    font-weight: 400;
+  }
 }

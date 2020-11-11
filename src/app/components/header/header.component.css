@@ -1,5 +1,9 @@
+.header{
+    width: 100%;
+}
+
 .toolbar{
-    background-color:  rgb(43, 41, 54);
+    background-color: black;
     color: azure;
 }
 
