@@ -13,7 +13,7 @@ export class AppComponent {
   public data: SummaryData;
 
   constructor(private dataService: DataService){}
-
+  public API_KEY;
   ngOnInit(): void {
       // this.dataService.getData().subscribe((data: SummaryData) => {
       //   console.log('data', data);

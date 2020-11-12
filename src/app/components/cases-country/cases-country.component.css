@@ -1,12 +1,7 @@
 .container {
   max-height: 100vh;
   overflow: hidden;
-  min-width: 600px;
   background-color: black;
-}
-
-.mobile-label {
-  display: none;
 }
 
 .title {
@@ -17,19 +12,17 @@
 
 .cards {
   align-items: center;
-  display: flex;
-  height: 12vh;
   margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px;
 }
 
 .global-cases {
-  margin-left: 10px;
-  margin-right: 10px;
-  width: fit-content;
-  flex: 1 1 auto;
+  margin: 0 10px;
+  margin-bottom: 10px;
+  width: 150px;
   background-color: rgb(43, 41, 54);
   color: azure;
-  flex-wrap: wrap;
 }
 
 .global-header {
@@ -57,27 +50,32 @@
   color: rgb(2, 192, 43);
 }
 
-table.mat-table {
+/* table.mat-table {
   display: table;
   width: 100%;
-}
+} */
 
 .data-table {
-  max-height: 100vh;
+  max-height: 80vh;
   flex-direction: column;
-  max-width: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: auto;
   background-color: rgb(43, 41, 54);
 }
 
-th.mat-header-cell {
+.mat-header-cell {
+  height: fit-content;
   color: azure;
   background-color: rgb(22, 19, 43);
-  font-size: 20px;
 }
 
 .cases-confirmed {
+  color: rgb(255, 0, 21);
+  background-color: rgb(43, 41, 54);
+  font-size: 18px;
+}
+
+.cases-active {
   color: rgb(255, 0, 21);
   background-color: rgb(43, 41, 54);
   font-size: 18px;
@@ -99,4 +97,79 @@ th.mat-header-cell {
   color: azure;
   background-color: rgb(43, 41, 54);
   font-size: 18px;
+}
+
+.mat-cell{
+  align-self: stretch;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  font-weight: 500;
+  width: 99%;
+  margin-left: 10px;
+}
+
+.mat-input-placeholder {
+  color: azure !important;
+}
+
+.mat-input-element {
+  color: azure;
+}
+
+::ng-deep .mat-form-field-underline,
+::ng-deep .mat-form-field-ripple {
+  background-color: azure !important;
+  color: azure !important;
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: azure !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .global-title {
+    font-size: 14px !important;
+  }
+
+  .global-cases {
+    margin: 0 5px;
+    margin-bottom: 5px;
+    width: 150px;
+    background-color: rgb(43, 41, 54);
+    color: azure;
+    padding: 8px 8px 8px 0;
+  }
+
+  .data-table {
+    max-height: 100vh;
+  }
+
+  .global-title {
+    font-size: 14px;
+  }
+
+  .cases-recovered,
+  .cases-text,
+  .cases-text-deaths {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .mat-header-cell {
+    font-size: 12px;
+    padding: 8px 8px 8px 10px;
+  }
+
+  .mat-cell {
+    font-size: 14px;
+    justify-content: center;
+    padding: 8px 8px 10px 10px;
+    align-self: stretch;
+  }
+
+  .country {
+    font-size: 14px !important;
+  }
 }

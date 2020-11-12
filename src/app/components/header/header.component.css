@@ -1,5 +1,9 @@
+.header{
+    width: 100%;
+}
+
 .toolbar{
-    background-color:  rgb(43, 41, 54);
+    background-color: black;
     color: azure;
 }
 
@@ -16,4 +20,14 @@ a{
 
 .active{
     color: rgb(0, 181, 187);
+}
+
+@media only screen and (max-width: 600px){
+    h1{
+        font-size: 14px;
+    }
+    span{
+        font-size: 14px;
+    }
+
 }
