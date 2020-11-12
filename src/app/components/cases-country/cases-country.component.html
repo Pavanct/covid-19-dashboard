@@ -112,21 +112,21 @@
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="todayCases">
+      <ng-container matColumnDef="todayCases" class="todayCases">
         <mat-header-cell *matHeaderCellDef mat-sort-header>New Cases</mat-header-cell>
         <mat-cell *matCellDef="let row" class="cases-confirmed">
           {{ row?.todayCases | number }}
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="todayDeaths">
+      <ng-container matColumnDef="todayDeaths" class="todayDeaths">
         <mat-header-cell *matHeaderCellDef mat-sort-header>New Deaths</mat-header-cell>
         <mat-cell *matCellDef="let row" class="cases-deaths">
           {{ row?.todayDeaths | number }}
         </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="todayRecovered">
+      <ng-container matColumnDef="todayRecovered" todayRecovered>
         <mat-header-cell *matHeaderCellDef mat-sort-header>New Recovered</mat-header-cell>
         <mat-cell *matCellDef="let row" class="cases-recovered-countries">
           {{ row?.todayRecovered | number }}

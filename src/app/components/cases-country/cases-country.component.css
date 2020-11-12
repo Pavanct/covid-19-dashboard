@@ -1,7 +1,6 @@
 .container {
   max-height: 100vh;
   overflow: hidden;
-  min-width: 600px;
   background-color: black;
 }
 
@@ -59,8 +58,7 @@
 .data-table {
   max-height: 80vh;
   flex-direction: column;
-  max-width: 100%;
-  width: 100%;
+  width: 100vw;
   overflow: auto;
   background-color: rgb(43, 41, 54);
 }
@@ -69,7 +67,6 @@
   height: fit-content;
   color: azure;
   background-color: rgb(22, 19, 43);
-  font-size: 16px;
 }
 
 .cases-confirmed {
@@ -128,7 +125,20 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .data-table{
+  .global-title {
+    font-size: 14px !important;
+  }
+
+  .global-cases {
+    margin: 0 5px;
+    margin-bottom: 5px;
+    width: 150px;
+    background-color: rgb(43, 41, 54);
+    color: azure;
+    padding: 8px 8px 8px 0;
+  }
+
+  .data-table {
     max-height: 100vh;
   }
 
@@ -139,20 +149,23 @@
   .cases-recovered,
   .cases-text,
   .cases-text-deaths {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 400;
   }
 
-  .mat-header-cell{
-    font-size: 10px;
+  .mat-header-cell {
+    font-size: 12px;
+    padding: 8px 8px 8px 10px;
   }
 
-  .mat-cell{
-    font-size: 13px;
+  .mat-cell {
+    font-size: 14px;
     justify-content: center;
+    padding: 8px 8px 10px 10px;
+    align-self: stretch;
   }
 
-  .country{
-    font-size: 11px;
+  .country {
+    font-size: 14px !important;
   }
 }

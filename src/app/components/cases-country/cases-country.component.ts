@@ -4,18 +4,21 @@ import { DataService } from 'src/app/services/data.service';
 import { MatSort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DeviceDetectorService } from 'ngx-device-detector';
+
 
 @Component({
   selector: 'app-cases-country',
   templateUrl: './cases-country.component.html',
   styleUrls: ['./cases-country.component.css']
 })
-export class CasesCountryComponent implements AfterViewInit  {
+export class CasesCountryComponent implements AfterViewInit {
   // @Input() data: SummaryData;
   public data: GlobalData;
   public globalData: GlobalData;
   public countries: CountryData[];
-  displayedColumns: string[] = ['country','cases', 'active','deaths', 'recovered', 'todayCases', 'todayDeaths', 'todayRecovered'];
+  displayedColumns: string[];
+  public isMobile: boolean;
   dataSource: MatTableDataSource<CountryData>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
@@ -26,17 +29,19 @@ export class CasesCountryComponent implements AfterViewInit  {
     this.dataSource.filter = filterValue;
   }
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private deviceService: DeviceDetectorService) {
+    this.isMobile = this.deviceService.isMobile();
+    if (this.isMobile) { this.displayedColumns = ['country', 'cases', 'active', 'deaths', 'recovered']; }
+    else { this.displayedColumns = ['country', 'cases', 'active', 'deaths', 'recovered', 'todayCases', 'todayDeaths', 'todayRecovered']; }
   }
 
   ngOnInit(): void {
-
-    this.dataService.getWorldData().subscribe((data: GlobalData)=> {
+    this.dataService.getWorldData().subscribe((data: GlobalData) => {
       this.data = data;
       this.globalData = data;
     });
 
-    this.dataService.getCountryData().subscribe((data: CountryData[])=>{
+    this.dataService.getCountryData().subscribe((data: CountryData[]) => {
       this.countries = data;
       this.dataSource = new MatTableDataSource<CountryData>(this.countries);
       this.dataSource.sort = this.sort;
@@ -45,6 +50,8 @@ export class CasesCountryComponent implements AfterViewInit  {
     this.dataSource.filterPredicate = (data: CountryData, filter: string) => {
       return data.Country == filter;
     };
+
+
 
   }
 
