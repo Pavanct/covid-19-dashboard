@@ -99,15 +99,13 @@
   font-size: 18px;
 }
 
-.mat-cell{
+.mat-cell {
   align-self: stretch;
 }
 
 .mat-form-field {
-  font-size: 16px;
-  font-weight: 500;
-  width: 99%;
-  margin-left: 10px;
+  width: 98%;
+  padding-left: 4px;
 }
 
 .mat-input-placeholder {
@@ -115,6 +113,21 @@
 }
 
 .mat-input-element {
+  color: azure;
+}
+
+.mat-icon {
+  color: azure;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: azure;
+}
+
+::ng-deep .mat-form-field,
+.mat-hint,
+input,
+.mat-form-field-label {
   color: azure;
 }
 

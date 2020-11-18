@@ -13,7 +13,6 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./cases-country.component.css']
 })
 export class CasesCountryComponent implements AfterViewInit {
-  // @Input() data: SummaryData;
   public data: GlobalData;
   public globalData: GlobalData;
   public countries: CountryData[];

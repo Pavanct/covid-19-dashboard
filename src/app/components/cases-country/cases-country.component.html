@@ -1,76 +1,75 @@
 <div class="container">
-  <div class="cards" fxLayout="row wrap" fxLayoutAlign="space-between">
+  <div class="cards" fxLayout="row wrap" fxLayoutAlign="space-between" *ngIf="globalData">
 
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">Total Cases</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-text">{{ globalData?.cases | number }}</p>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">Total Deaths</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-text-deaths">{{ globalData?.deaths | number }}</p>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">Total Recovered</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-recovered">{{ globalData?.recovered | number }}</p>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">New Cases</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-text">{{ globalData?.todayCases | number }}</p>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">New Deaths</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-text-deaths">{{ globalData?.todayDeaths | number }}</p>
-          </mat-card-content>
-        </mat-card>
-        
-        <mat-card class="global-cases" fxFlex="1 1 auto">
-          <mat-card-header class="global-header">
-            <mat-card-title class="global-title">New Recoveries</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="cases-recovered">{{ globalData?.todayRecovered | number }}</p>
-          </mat-card-content>
-        </mat-card>
- 
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">Total Cases</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-text">{{ globalData?.cases | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">Total Deaths</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-text-deaths">{{ globalData?.deaths | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">Total Recovered</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-recovered">{{ globalData?.recovered | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">New Cases</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-text">{{ globalData?.todayCases | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">New Deaths</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-text-deaths">{{ globalData?.todayDeaths | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="global-cases" fxFlex="1 1 auto">
+      <mat-card-header class="global-header">
+        <mat-card-title class="global-title">New Recoveries</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="cases-recovered">{{ globalData?.todayRecovered | number }}</p>
+      </mat-card-content>
+    </mat-card>
+
   </div>
   <div class="filter">
-    <mat-form-field>
-      <input
-        matInput
-        (keyup)="applyFilter($event.target.value)" placeholder="Search by Country"
-      />
-    </mat-form-field>
+    <div class="wrapper">
+      <mat-form-field appearance="outline">
+        <mat-label>Search by Country</mat-label>
+        <input matInput (keyup)="applyFilter($event.target.value)" />
+        <span class="search-icon" matPrefix>
+          <mat-icon>search &nbsp;</mat-icon>
+        </span>
+      </mat-form-field>
+    </div>
+
   </div>
   <div class="mat-elevation-z8 data-table">
-    <mat-table
-      [dataSource]="dataSource"
-      matSort
-      matSortActive="cases"
-      matSortDirection="desc"
-    >
+    <mat-table [dataSource]="dataSource" matSort matSortActive="cases" matSortDirection="desc">
       <ng-container matColumnDef="country">
         <mat-header-cell *matHeaderCellDef class="country-header">
           Country
