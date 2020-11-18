@@ -1,7 +1,5 @@
 .container{
     background-color: black;
-}
-
-.content{
-    overflow-y: hidden !important;
+    display: flex;
+    flex-direction: column;
 }
