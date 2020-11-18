@@ -1,5 +1,4 @@
 .map-container {
-  /* height: calc(100% - 56px); */
   width: 100vw;
 }
 
@@ -9,6 +8,6 @@
 }
 
 #map {
-  height: 100%;
+ height: calc(100% - 64px);
 }
 
