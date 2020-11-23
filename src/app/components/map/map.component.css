@@ -13,7 +13,7 @@
 
 @media only screen and (max-width: 600px){
   #map{
-    height: calc(100% - 100px);
+    height: calc(95% - 100px);
   }
 }
 
